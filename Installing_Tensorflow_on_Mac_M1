@@ -1,0 +1,37 @@
+https://medium.com/dive-into-ml-ai/installing-tensorflow-natively-on-mac-m1-in-2022-1357e9b7a201
+
+Installing tensorflow natively on mac-M1 in 2022
+As things stand on May 2022
+
+Since the original release by Apple in November 2020 of first Macs with an Arm-based M1 chip, there has been a constant struggle to install tensorflow natively on these machines.
+
+A single internet search and one can come across pages and pages full of people complaining about this. Numerous workarounds have been proposed over the months, none without their own complications. A glimpse can be seen on the discussion on Apple’s developer forum.
+
+I bought my M1-machine back in May, 2021 and spent a lot of time struggling, before giving up on it myself as well. A year on and a few minor hiccups later, I could finally got it working. Here are the involved steps.
+
+System Configuration
+macOS Monterey 12.3.1
+pyenv local 3.9.1
+Procedure
+
+Simply trying pip install tensorflow-macos, resulted in following installation issue with h5py
+error: Unable to load dependency HDF5, make sure HDF5 is installed properly
+
+It was resolved following the below solution from link.
+
+brew install hdf5
+export HDF5_DIR="$(brew --prefix hdf5)"
+pip install --no-binary=h5py h5py 
+Moving on, installing tensorflow-io-gcs-filesystem threw another error,
+Unable to find installation candidates for tensorflow-io-gcs-filesystem (0.25.0)
+
+To resolve this I had to manually install tensorflow-io-gcs-filesystem from the wheel file as proposed here.
+
+git clone https://github.com/tensorflow/io.git
+cd io
+python setup.py -q bdist_wheel
+python -m pip install --no-deps dist/<wheel-file-from-last-step>
+Of course, this is still far from ideal but I find it much better than the earlier solutions requiring workarounds with miniforge, etc.
+
+Disclaimer: The installation was done using pyenv with local python 3.9.1. There might still be issues with earlier python versions. 
+In case there are issues working with pyenv on macOS please check out my article here.
