@@ -6,7 +6,13 @@ https://github.com/apache/kafka/blob/acd1f9c5631ed2aec2d6ab238e6b81c1a9eb47a2/st
 
 https://github.com/a0x8o/kafka/blob/master/streams/src/main/java/org/apache/kafka/streams/state/internals/RocksDbIterator.java
 
-### RocksDB in Hadoop ozone
+### Column Family in RocksDB
+https://github.com/facebook/rocksdb/wiki/Column-Families
+https://github.com/facebook/rocksdb/blob/main/examples/column_families_example.cc
+
+Column family can be processed as a table in database. each Column Family has different <Key, Value> types mapping with a column family name as identifier.
+
+### RocksDB Table abstraction in Hadoop ozone
 
 Ozone is a distributed object store for Hadoop based on Raft(Apache Ratis) and RockDB. Ozone can be run on Kubernetes.
 Ozone comes with a Java client library, S3 protocol support, and a command line interface which makes it easy to use Ozone.
