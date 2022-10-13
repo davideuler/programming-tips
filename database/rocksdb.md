@@ -68,5 +68,9 @@ Loop through all record in a table with id > lastDocumentId (to performan a rang
 
 
 ## Ozone Architecture:
-https://ozone.apache.org/docs/1.2.1/concept/overview.html
-https://ozone.apache.org/docs/1.2.1/concept/storagecontainermanager.html
+[Overview](https://ci-hadoop.apache.org/view/Hadoop%20Ozone/job/ozone-doc-master/lastSuccessfulBuild/artifact/hadoop-hdds/docs/public/concept/overview.html)
+
+[1.2.1 Storage Container Manager](https://ozone.apache.org/docs/1.2.1/concept/storagecontainermanager.html)
+
+Ozone design docs:
+https://ci-hadoop.apache.org/view/Hadoop%20Ozone/job/ozone-doc-master/lastSuccessfulBuild/artifact/hadoop-hdds/docs/public/design.html
