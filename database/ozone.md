@@ -12,6 +12,12 @@ cd compose/ozone
 docker-compose up -d --scale datanode=3
 ```
 
+## Document for ozone
+https://zhuanlan.zhihu.com/p/537275670
+https://hadoop.apache.org/ozone/docs/1.0.0/zh/recipe.html
+https://www.51cto.com/article/718239.html
+
+
 ## Build ozone on JDK 17 (
 
 Pass MAVEN_OPTS to maven, to avoid the error of: 
