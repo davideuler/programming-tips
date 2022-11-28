@@ -11,6 +11,8 @@ https://arxiv.org/pdf/1711.06964.pdf
 
 https://github.com/maemual/raft-zh_cn
 
+https://www.ballista.com/wp-content/uploads/2022/04/Rocks___Raft.pdf
+
 **Ratis Example**
 
 https://github.com/apache/iotdb
@@ -32,3 +34,28 @@ https://github.com/Alluxio/alluxio
 https://www.alluxio.io/blog/from-zookeeper-to-raft-how-alluxio-stores-file-system-state-with-high-availability-and-fault-tolerance/
 
 https://www.youtube.com/watch?v=CSe7-6AYX5o&ab_channel=ApacheOzone-unofficial
+
+**Raft Election and Cluster Management**
+
+The leader is selected through an elections
+process that ensures only a candidate server with the most up-todate log can be elected as the leader.
+
+Each server within a Raft cluster starts off as a follower with
+a randomized timer. If the timer reaches zero before the server
+receives a request from a leader, the server will kick of an election
+by converting to a candidate and sending out a request for votes to
+all the other servers in the cluster. Once a candidate receives a vote
+from a majority of the nodes in the cluster, it converts to a leader
+and starts sending heartbeat requests to all nodes in the cluster to
+prevent another from starting a new election.
+
+If the leader node for some reason subsequently goes down,
+another server will start the election process once it’s randomized
+timer runs down without having received any requests from the
+leader. A new server can be added to an existing cluster at any
+time and it will stay in a follower state once it starts receiving
+heartbeat requests from the leader of the cluster. The leader of the
+cluster receives the current index of the logs for all followers in
+their response back to the heartbeat and therefore can replicate
+data as needed to bring the servers up-to-date.
+
