@@ -35,6 +35,11 @@ https://www.alluxio.io/blog/from-zookeeper-to-raft-how-alluxio-stores-file-syste
 
 https://www.youtube.com/watch?v=CSe7-6AYX5o&ab_channel=ApacheOzone-unofficial
 
+OZone architecture:
+https://blog.cloudera.com/apache-hadoop-ozone-object-store-architecture/
+https://www.itweet.cn/2021/01/21/apache-ozone-object-store-architecture/
+
+
 **Raft Election and Cluster Management**
 
 The leader is selected through an elections
