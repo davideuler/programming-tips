@@ -39,6 +39,12 @@ OZone architecture:
 https://blog.cloudera.com/apache-hadoop-ozone-object-store-architecture/
 https://www.itweet.cn/2021/01/21/apache-ozone-object-store-architecture/
 
+Ozone at Tencent:
+https://mp.weixin.qq.com/s/6rtkmwjfI_Cl-hYMrDOOyA
+
+Ozone docs:
+https://docs.qq.com/doc/DZUJFSXFuZHFXRGZp
+
 
 **Raft Election and Cluster Management**
 
