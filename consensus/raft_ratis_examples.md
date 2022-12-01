@@ -1,4 +1,10 @@
 
+**Raft course videos, and implementations**
+https://raft.github.io/#implementations
+
+**jraft user guide**
+https://www.sofastack.tech/projects/sofa-jraft/jraft-user-guide/
+
 **Raft Papers**
 
 https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf
@@ -16,6 +22,7 @@ https://github.com/maemual/raft-zh_cn
 https://www.ballista.com/wp-content/uploads/2022/04/Rocks___Raft.pdf
 
 **Ratis Example**
+
 
 https://github.com/apache/iotdb
 
