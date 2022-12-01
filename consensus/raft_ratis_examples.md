@@ -1,6 +1,8 @@
 
 **Raft Papers**
 
+https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf
+
 https://www.usenix.org/system/files/hotcloud19-paper-ahn.pdf
 
 https://kudu.apache.org/docs/index.html#raft
