@@ -21,8 +21,8 @@ https://github.com/maemual/raft-zh_cn
 
 https://www.ballista.com/wp-content/uploads/2022/04/Rocks___Raft.pdf
 
-**Ratis Example**
 
+**Ratis Example**
 
 https://github.com/apache/iotdb
 
@@ -34,9 +34,18 @@ https://github.com/tincopper/tomgs-java/blob/2c92ea651e4a5c95a5632ea12f2f9d50942
 
 https://github.com/alpapad/raft-retry-log/blob/0c4d5ee38d85bf22bbe4f2d852af0eaa0e10c066/retry-log-server/src/main/java/com/aktarma/retrylog/server/db/IDbBackend.java#L4
 
+
+https://github.com/korandoru/zeronos/blob/main/zeronos-core/src/main/proto/Zeronos.proto
+https://github.com/opendataio/ratis-shell
+
+Ratis snapshot:
+https://github.com/apache/ratis/blob/master/ratis-docs/src/site/markdown/snapshot.md
+
 **Ozone & Alluxio**
 
 https://blog.cloudera.com/apache-ozone-metadata-explained/
+
+https://blog.cloudera.com/ozone-write-pipeline-v2-with-ratis-streaming/
 
 https://github.com/Alluxio/alluxio
 
