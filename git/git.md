@@ -15,3 +15,27 @@ If you specify a tag, should fetch tags firstly:
 ```
 git submodule foreach --recursive 'git fetch --tags' 
 ```
+
+# 2.discard all uncommitted changes && discard changes on a single file
+
+To discard all uncommited changes:
+```
+git reset --hard HEAD
+```
+
+To discard changes on a single file
+```
+git checkout -- <file>
+```
+
+Also can use "git restore <file>..." to discard changes in working directory
+```
+git restore <file>...
+```
+
+To stash all changes to local temparory storage and restore them later:
+```
+git stash 
+git stash pop
+```
+
