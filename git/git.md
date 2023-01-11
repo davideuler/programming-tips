@@ -21,7 +21,10 @@ git submodule foreach --recursive 'git fetch --tags'
 To discard all uncommited changes:
 ```
 git reset --hard HEAD
+git reset --hard <commit id>
 ```
+
+Use Git reset --hard <commit id> to point the repo to a previous commit.
 
 To discard changes on a single file
 ```
@@ -38,4 +41,9 @@ To stash all changes to local temparory storage and restore them later:
 git stash 
 git stash pop
 ```
+Git stash lets you discard changes and save them for later reuse.
 
+Use Git reflog to check commits history.
+```
+git reflog
+```
