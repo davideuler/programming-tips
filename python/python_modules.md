@@ -43,6 +43,20 @@ def query_database():
 
 ```
 
+## Dynamically replace a method of third-party library.
+
+For example, repace the werobot get_access_token method to use a customized method which stores token in redis, 
+and share the token across processes.
+
+```
+from werobot.client import Client
+
+## 覆盖 Client 类中的 get_access_token 方法，存储 token 信息到 redis
+from client_shared import get_shared_access_token
+
+Client.get_access_token = get_shared_access_token
+```
+
 
 ## Call a function dynamically by function name
 
