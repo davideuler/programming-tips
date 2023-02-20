@@ -27,6 +27,11 @@ logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:
 logger = logging.getLogger(__name__)
 ```
 
+## Logging by Loguru
+
+https://github.com/Delgan/loguru
+
+
 ## Get current function name 
 
 function_name = sys._getframe().f_code.co_name
