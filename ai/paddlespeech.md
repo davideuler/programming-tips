@@ -71,12 +71,29 @@ Python API
 
 from paddlespeech.cli.tts.infer import TTSExecutor
 
+# https://github.com/PaddlePaddle/PaddleSpeech/blob/develop/demos/text_to_speech/README_cn.md
+
+# for pure Chinese
 args = ['--input', '今天天气十分不错，咱们去哪里玩', '--am', 'fastspeech2_male', '--voc', 'hifigan_male', '--output', 'male.wav']
 tts = TTSExecutor()
 tts.execute(args)
 
 
 args = ['--input', '今天天气十分不错，咱们去哪里玩', '--am', 'fastspeech2_csmsc', '--voc', 'hifigan_csmsc', '--output', 'female.wav']
+tts = TTSExecutor()
+tts.execute(args)
+
+
+# for Chinese and English mixed 
+args = ['--input', '今天天气十分不错，咱们去哪里玩, come on, lets go ', '--am', 'fastspeech2_male', '--voc', 'hifigan_male', '--lang','mix', '--output', 'mix_male.wav']
+tts = TTSExecutor()
+tts.execute(args)
+
+args = ['--input', '今天天气十分不错，咱们去哪儿玩, come on, lets go', '--am', 'fastspeech2_mix', '--voc', 'hifigan_csmsc', '--lang','mix', "--spk_id", '174', '--output', 'mix_female_hifigan.wav']
+tts = TTSExecutor()
+tts.execute(args)
+
+args = ['--input', '今天天气十分不错，咱们去哪儿玩, come on, lets go', '--am', 'fastspeech2_mix', '--voc', 'mb_melgan_csmsc', '--lang','mix', "--spk_id", '174', '--output', 'mix_female_mel.wav']
 tts = TTSExecutor()
 tts.execute(args)
 
