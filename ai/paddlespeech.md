@@ -44,6 +44,16 @@ command line experience
 
 ```
 paddlespeech tts --input "你好，欢迎使用百度飞桨深度学习框架！" --output output.wav
+
+paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_csmsc --voc mb_melgan_csmsc --output fastspeech_mb_melgan_csmsc.wav
+
+# hifigan_vctk is for English
+paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_male --voc hifigan_male  --output hifigan_male.wav
+
+paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_male --voc mb_melgan_csmsc --output mb_melgan_csmsc.wav
+
+paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am speedyspeech_csmsc --voc pwgan_male --output pwgan_male.wav
+
 ```
 
 Python API 
@@ -52,6 +62,23 @@ Python API
 >>> from paddlespeech.cli.tts.infer import TTSExecutor
 >>> tts = TTSExecutor()
 >>> tts(text="今天天气十分不错。", output="output.wav")
+```
+
+```
+from paddlespeech.cli.tts.infer import TTSExecutor
+tts = TTSExecutor()
+
+##  FIXME: 指定 am, voc 没有效果
+tts(text="今天天气十分不错。", am="fastspeech2_csmsc", voc="mb_melgan_csmsc",  output="fastspeech2_csmsc.wav", )
+tts(text="今天天气十分不错。", am="fastspeech2_csmsc", voc="hifigan_male", output="fastspeech2_hifigan_male.wav",)
+
+tts(text="今天天气十分不错。", am="fastspeech2_male", voc="hifigan_male", output="fastspeech2_male_hifigan.wav",)
+tts(text="今天天气十分不错。", am="fastspeech2_male", voc="mb_melgan_csmsc", output="fastspemb_melgan.wav",)
+
+#tts(text="今天天气十分不错。", am="speedyspeech_csmsc", voc="pwgan_male", output="speedyspeech_csmsc_pwgan_male.wav", )
+#tts(text="今天天气十分不错。", am="speedyspeech_csmsc", voc="hifigan_male", output="speedyspeech_csmsc_hifigan_male.wav",)
+
+
 ```
 
 ## If got this error, python setup.py egg_info did not run successfully error: metadata-generation-failed, 
