@@ -67,10 +67,27 @@ Python API
 ```
 
 ```
+# working example to use multiple vocoder
+
+from paddlespeech.cli.tts.infer import TTSExecutor
+
+args = ['--input', '今天天气十分不错，咱们去哪里玩', '--am', 'fastspeech2_male', '--voc', 'hifigan_male', '--output', 'male.wav']
+tts = TTSExecutor()
+tts.execute(args)
+
+
+args = ['--input', '今天天气十分不错，咱们去哪里玩', '--am', 'fastspeech2_csmsc', '--voc', 'hifigan_csmsc', '--output', 'female.wav']
+tts = TTSExecutor()
+tts.execute(args)
+
+```
+
+```
+##  Not working example, FIXME: 指定 am, voc 没有效果
+
 from paddlespeech.cli.tts.infer import TTSExecutor
 tts = TTSExecutor()
 
-##  FIXME: 指定 am, voc 没有效果
 tts(text="今天天气十分不错。", am="fastspeech2_csmsc", voc="mb_melgan_csmsc",  output="fastspeech2_csmsc.wav", )
 tts(text="今天天气十分不错。", am="fastspeech2_csmsc", voc="hifigan_male", output="fastspeech2_hifigan_male.wav",)
 
