@@ -47,6 +47,8 @@ paddlespeech tts --input "你好，欢迎使用百度飞桨深度学习框架！
 
 paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_csmsc --voc mb_melgan_csmsc --output fastspeech_mb_melgan_csmsc.wav
 
+paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_csmsc --voc hifigan_csmsc --output fastspeech2_hifigan_csmsc.wav
+
 # hifigan_vctk is for English
 paddlespeech tts --input "欢迎和我一起学习 Python 编程，这是一个有趣的编程语言！" --am fastspeech2_male --voc hifigan_male  --output hifigan_male.wav
 
