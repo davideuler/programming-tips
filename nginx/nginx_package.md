@@ -8,7 +8,7 @@ make -j16
 make install
 
 
-## Config proxy pass and proxy cache for pages
+## Config proxy pass and proxy cache for pages (proxy pass all traffic of new.mydomain.com to origin.com)
 
 https://stackoverflow.com/questions/5100883/why-nginx-does-not-cache-my-content
 https://serverfault.com/questions/487104/nginx-not-caching-pages-immediately
@@ -25,7 +25,7 @@ http {
     client_header_timeout 600s;
     client_body_timeout 600s;
     client_max_body_size 20m;    #允许上传的最大文件大小
-    proxy_cache_path /data/tengine/cache/ctext keys_zone=mycache:50m max_size=3000m inactive=9256000m;
+    proxy_cache_path /data/tengine/cache/origin keys_zone=mycache:50m max_size=3000m inactive=9256000m;
     ## ......
 }
 ```
@@ -38,7 +38,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-     server_name  ctext.ruoguedu.cn;
+     server_name  new.mydomain.cn;
 
      proxy_cache mycache;
 
@@ -64,7 +64,7 @@ server {
       proxy_hide_header Set-Cookie;
 
          proxy_redirect off;
-         proxy_set_header Host ctext.org;
+         proxy_set_header Host origin.org;
          proxy_set_header X-Real-IP $remote_addr;
          proxy_set_header REMOTE-HOST $remote_addr;
          proxy_connect_timeout 300;
