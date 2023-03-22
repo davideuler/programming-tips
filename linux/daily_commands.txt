@@ -1,0 +1,3 @@
+
+## Show local  listening services, and ports with process names
+lsof -i -n -P | grep LISTEN
