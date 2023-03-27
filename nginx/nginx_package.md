@@ -63,8 +63,9 @@ server {
       proxy_ignore_headers Expires;
       proxy_hide_header Set-Cookie;
 
-         proxy_redirect off;
-         proxy_set_header Host origin.org;
+        #    proxy_redirect off; ## proxy redirect for 301 location redirect
+        proxy_redirect https://origin.com/ /;
+         proxy_set_header Host origin.com;
          proxy_set_header X-Real-IP $remote_addr;
          proxy_set_header REMOTE-HOST $remote_addr;
          proxy_connect_timeout 300;
