@@ -45,6 +45,25 @@ gdb -p 1234
 # gdb will pause our application
 ```
 
+  
+##Debug a core dump by Java applicaiton
+  
+  https://www.javacodegeeks.com/2013/02/analysing-a-java-core-dump.html
+  https://stackoverflow.com/questions/64134676/core-dump-happens-in-java-native-method
+
+  gdb $JAVA_HOME/bin/java core.dump
+  
+##Enable core dump in Docker container
+  
+  For k8s, need to setup the kernel core_pattern in the k8s cluster host machine.
+  
+  ```
+  echo '/data/core.%e.%p' | tee /proc/sys/kernel/core_pattern
+  ```
+  
+  For Aliyun ACK:
+  https://help.aliyun.com/document_detail/188766.html#section-woz-eew-cjk
+  
 ## How to debug jni code on MacOS?
 
   https://www.owsiak.org/lldb-and-jni/
