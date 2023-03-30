@@ -1,0 +1,5 @@
+# copy files from k8s container
+
+```
+kubectl --kubeconfig=$K8S_DEV --namespace myspace cp  db/debug-12345-3gdcx:/data/script.sh ./script.sh
+```
