@@ -61,11 +61,20 @@ struct Args {
     name: String,
 }
 
+
 fn parse_docx(file_name: &str, output_text: & mut String) -> anyhow::Result<()> {
-    let data: Value = serde_json::from_str(&read_docx(&read_to_vec(file_name)?)?.json())?;
+    parse_docx_from_bytes(&read_to_vec(file_name)?, output_text)?;
+    Ok(())
+}
+
+fn parse_docx_from_bytes(data: &[u8],output_text: & mut String) -> anyhow::Result<()> {
+    let data: Value = serde_json::from_str(&read_docx(data)?.json())?;
     if let Some(children) = data["document"]["children"].as_array() {
         children.iter().for_each(|node: &Value| {
+            // println!("type: {}", node["type"]);
+            // println!("node: {}", node);
             read_children(node, output_text);
+            output_text.push_str("\n");
         })
     }
     Ok(())
