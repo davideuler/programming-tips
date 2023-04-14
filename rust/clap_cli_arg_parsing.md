@@ -61,21 +61,25 @@ struct Args {
     name: String,
 }
 
-fn parse_docx(file_name: &str) -> anyhow::Result<()> {
+fn parse_docx(file_name: &str, output_text: & mut String) -> anyhow::Result<()> {
     let data: Value = serde_json::from_str(&read_docx(&read_to_vec(file_name)?)?.json())?;
     if let Some(children) = data["document"]["children"].as_array() {
-        children.iter().for_each(read_children);
+        children.iter().for_each(|node: &Value| {
+            read_children(node, output_text);
+        })
     }
     Ok(())
 }
 
-fn read_children(node: &Value) {
+fn read_children(node: &Value, output_text: & mut String) {
     if let Some(children) = node["data"]["children"].as_array() {
         children.iter().for_each(|child| {
             if child["type"] != "text" {
-                read_children(child);
+                read_children(child, output_text);
             } else {
-                println!("{}", child["data"]["text"]);
+                // println!("{}", child["data"]["text"]);
+                output_text.push_str(child["data"]["text"].as_str().unwrap());
+                output_text.push_str("\n");
             }
         });
     }
@@ -89,7 +93,10 @@ fn read_to_vec(file_name: &str) -> anyhow::Result<Vec<u8>> {
 
 fn main() -> anyhow::Result<()> {
     let args = Args::parse();
-    parse_docx(&args.name)?;
+    let mut output_text = String::new();
+
+    parse_docx(&args.name, & mut output_text)?;
+    println!("{}", output_text);
     Ok(())
 }
 ```
