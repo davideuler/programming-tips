@@ -3,6 +3,9 @@
 * Swagger3.0: https://blog.csdn.net/m0_59562547/article/details/118933734
 * Swagger 3.0 editor: https://editor.swagger.io/
 * Get started: https://swagger.io/tools/open-source/getting-started/
+* https://github.com/OpenAPITools/openapi-generator#3---usage
+* https://www.baeldung.com/java-openapi-generator-server
+* https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md
 
 ## Different ways to swagger: 
 * server code -> yaml -> api doc & client code
