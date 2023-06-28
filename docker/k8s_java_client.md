@@ -350,5 +350,8 @@ Configure you local ~/.kube/config file, and then can run the code to test.
 
 Configured service account doesn't have access. Service account may have been revoked. jobs.batch is forbidden: User  cannot create resource "jobs" in API group "batch" in the namespace
 
-# kubectl create clusterrolebinding default-shared-sa-bd --clusterrole=cluster-admin --serviceaccount=mynamespace-test:default-shared-sa
+$ kubectl create clusterrolebinding default-shared-sa-bd --clusterrole=cluster-admin --serviceaccount=mynamespace-test:default-shared-sa
+
+## 5.Operators
+https://blog.container-solutions.com/cloud-native-java-infrastructure-automation-with-kubernetes-operators
 
