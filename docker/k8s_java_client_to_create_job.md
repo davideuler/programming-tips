@@ -123,30 +123,32 @@ List<ContainerSpec.Volume> volumes = buildContainerVolume(instanceId);
 
             // 3. Create Job
             Job job = new JobBuilder()
-                .withNewMetadata().addToLabels("app", metadata.getName())
-                .withName(jobName)
-                .endMetadata()
-                .withNewSpec()
-                .withNewTemplate()
-                .withNewMetadata().withAnnotations(annotations).endMetadata()
-                .withNewSpec() 
-                .addAllToVolumes(k8sVolumes)
-
-                .addNewContainer()
-                .withName(containerName)
-                .withImage(imageName)
-                .withCommand(command).withArgs(args)
-                .withEnv(envVars)
-                .withNewResources()
-                .addToRequests(resources).addToLimits(resources)
-                .endResources()
-                .addAllToVolumeMounts(volumeMounts)
-                .endContainer()
-                .withRestartPolicy("Never")
-                .endSpec()
-                .endTemplate()
-                .endSpec()
-                .build();
+                    .withNewMetadata().addToLabels("app", metadata.getName())
+                        .withName(jobName)
+                    .endMetadata()
+                    .withNewSpec()
+                        // time to live for finished/failed jobs, 60min
+                        .withTtlSecondsAfterFinished(3600)
+                        .withNewTemplate()
+                            .withNewMetadata().withAnnotations(annotations).endMetadata()
+                            .withNewSpec() //.withVolumes(volumes)
+                                .addAllToVolumes(k8sVolumes)
+                                .addNewContainer()
+                                    .withName(containerName)
+                                    .withImage(imageName)
+                                    .withCommand(command).withArgs(args)
+                                    .withEnv(envVars)
+                                    .withNewResources()
+                                        .addToRequests(resources).addToLimits(resources)
+                                    .endResources()
+                                    .addAllToVolumeMounts(volumeMounts)
+                                .endContainer()
+                                //.withServiceAccountName("my-service-account")
+                    .withRestartPolicy("Never")
+                    .endSpec()
+                    .endTemplate()
+                    .endSpec()
+                    .build();
 
             log.info("Creating job:{}", jobName);
             client.batch().jobs().inNamespace(namespace).createOrReplace(job);
@@ -352,6 +354,49 @@ Configured service account doesn't have access. Service account may have been re
 
 $ kubectl create clusterrolebinding default-shared-sa-bd --clusterrole=cluster-admin --serviceaccount=mynamespace-test:default-shared-sa
 
+show rolebindings for service account:
+$ kubectl get rolebindings,clusterrolebindings --all-namespaces | grep <serviceaccount-name>
+
+
 ## 5.Operators
 https://blog.container-solutions.com/cloud-native-java-infrastructure-automation-with-kubernetes-operators
 
+## 6.Listening to events of pod
+
+```
+        Set<String> podNames = client.pods().inNamespace(namespace).withLabel("app", workspaceId).resources().map(p -> p.get().getMetadata().getName()).collect(Collectors.toSet());
+        
+        Watch watch = client.v1().events().inNamespace(namespace).watch(new Watcher<Event>() {
+            @Override
+            public void eventReceived(Action action, Event event) {
+                if (event.getInvolvedObject() == null || false == podNames.contains(event.getInvolvedObject().getName())) {
+                    return;
+                }
+                Deployment deployment = client.apps().deployments().inNamespace(namespace).withName(workspaceId).get();
+                if (deployment != null) {
+                    DeploymentStatus status = getStatus(deployment.getMetadata(), deployment.getStatus());
+                    status.setLastUpdateTime(getEventTime(event));
+                    status.setMessage(event.getMessage());
+                    log.info("Watched Event action:{} status={}:{}", action, status.getType(), status.getMessage());
+                }
+            }
+
+            @Override
+            public void onClose(WatcherException cause) {
+
+            }
+        });
+
+    private String getEventTime(Event event) {
+        if (event.getEventTime() != null) {
+            return event.getEventTime().getTime();
+        }
+        if (event.getLastTimestamp() != null) {
+            return event.getLastTimestamp();
+        }
+        if (event.getMetadata().getCreationTimestamp() != null) {
+            return event.getMetadata().getCreationTimestamp();
+        }
+        return event.getLastTimestamp();
+    }
+```
