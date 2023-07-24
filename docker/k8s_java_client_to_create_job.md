@@ -400,3 +400,70 @@ https://blog.container-solutions.com/cloud-native-java-infrastructure-automation
         return event.getLastTimestamp();
     }
 ```
+
+## 7. watch events for pod
+
+```
+        Watch watch1 = client.apps().deployments().inNamespace(namespace).withName(appName).watch(new Watcher<Deployment>() {
+            @Override
+            public void eventReceived(Action action, Deployment resource) {
+                //...
+                log.info("watch-Deployment action:{} status={}:{}", action, status.getType(), status.getDetail());
+            }
+
+            @Override
+            public void onClose(WatcherException cause) {
+
+            }
+        });
+
+        Set<String> podNames = client.pods().inNamespace(namespace).withLabel("app", appName).resources().map(p -> p.get().getMetadata().getName()).collect(Collectors.toSet());
+        if (CollectionUtils.isEmpty(podNames)) {
+            return;
+        }
+        Watch watch2 = client.v1().events().inNamespace(namespace).watch(new Watcher<Event>() {
+            @Override
+            public void eventReceived(Action action, Event event) {
+                if (event.getInvolvedObject() == null || false == podNames.contains(event.getInvolvedObject().getName())) {
+                    return;
+                }
+                Deployment deployment = client.apps().deployments().inNamespace(namespace).withName(appName).get();
+                if (deployment != null) {
+                    //.... some logic
+                    log.info("watch-Event action:{} status={}:{}", action, status.getType(), status.getMessage());
+                }
+            }
+
+            @Override
+            public void onClose(WatcherException cause) {
+
+            }
+        });
+```
+
+
+## 8. get logs of a pod
+
+```
+    public String getPodLog(String namespace, String podName) {
+        return client.pods().inNamespace(namespace).withName(podName).withPrettyOutput().getLog();
+    }
+
+    // get only the tailing log, when log is long, the full log will be rotated and truncated, and could not returned by getLog()
+    public String getPodTailLog(String namespace, String podName, int tailLines){
+
+        PodList podList = client.pods().inNamespace(namespace).list();
+
+        Pod pod = podList.getItems().stream()
+            .filter(p -> p.getMetadata().getName().equals(podName))
+            .findFirst()
+            .orElse(null);
+
+        String logs = "";
+        if (pod != null) {
+            logs = client.pods().inNamespace(namespace).withName(podName).tailingLines(tailLines).getLog(true);
+        }
+
+        return logs;
+    }
+```
