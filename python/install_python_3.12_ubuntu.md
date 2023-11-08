@@ -4,7 +4,7 @@ See discussions here:
 
 
 
-Install Python 3.12 with openssl on ubuntu 20.04:
+## 1.Install Python 3.12 with openssl on ubuntu 20.04:
 
 ```
 wget https://www.openssl.org/source/openssl-3.1.4.tar.gz
@@ -16,9 +16,9 @@ sudo make -j32
 sudo make install
 ```
 
-Install Python 3.12
+## Install Python 3.12
 
-Firstly, prepare the library path:
+### Firstly, prepare the library path (for openssl libs to be found on lib64):
 
 ``` vim ~/.profile ```
 
@@ -26,7 +26,15 @@ Firstly, prepare the library path:
 export LD_LIBRARY_PATH="/usr/local/lib64:$LD_LIBRARY_PATH"
 ```
 
-Then install python 3.12 from source:
+### Install prerequisite packages (the step is important, else many runtime errors may occur):
+
+```bash
+apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+```
+
+see: https://stackoverflow.com/questions/50335503/no-module-named-bz2-in-python3
+
+### Then install python 3.12 from source:
 
 ```
 sudo apt install libffi-dev
@@ -39,15 +47,15 @@ sudo make -j32
 sudo make altinstall
 ```
 
-In case you would like to skip unit test when compiling, add the skip instructions for configure: ``` --without-tests --disable-tests ```.
+In case you would like to skip unit test when compiling (for python 3.12), add the skip instructions for configure: ``` --without-tests --disable-tests ```.
 
-And you may make part of the targets if the params not work:
+And you may make part of the targets if the tests skipping params not work (for python 3.10):
 ```
 make -j32 build_all
 make -j32 altinstall
 ```
 
-To test it out, run python3.12 and input:
+### To test it out, run python3.12 and input:
 
 ```
 import ssl
