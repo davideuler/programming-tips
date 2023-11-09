@@ -1,7 +1,7 @@
 
-Benchmark python function by multi threads
+#Benchmark python function by multi threads
 
-Start 10 threads to benchmark the hello() function.
+#Start 10 threads to benchmark the hello() function.
 
 ```
 import threading  
