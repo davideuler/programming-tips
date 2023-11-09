@@ -200,3 +200,25 @@ def chat_chatglm(prompt, history=[]):
 
 print(chat_chatglm("hello"))
 ```
+
+## FAQs
+
+Pip package for pytorch which works with Cuda
+Pytorch 与 Cuda 的版本兼容列表：
+
+https://pytorch.org/get-started/previous-versions/
+
+Q1: cuda 11.4 的驱动（nvidia-smi看到的版本号）， 如何安装 torch ?
+A: cuda 11.4/11.6 的驱动，可以使用 torch cu113, cu118 兼容的 pip 包, 详细讨论:
+pytorch/pytorch#75992
+
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+
+可以从镜像站下载包安装, 搭配 Python 3.10 的版本包：
+wget https://mirror.sjtu.edu.cn/pytorch-wheels/cu113/torch-1.12.0+cu113-cp310-cp310-linux_x86_64.whl
+
+Q2: 只有 cuda 11.4 的系统驱动(nvidia-smi)， 要使用 torch 2.0.1 以上的版本，如何安装 torch?
+A: 如果需要使用 torch 2.0.1 以上的版本，但 ubuntu 系统只有 cuda 11.4 的驱动，可以使用 torch 2.0.1 & cu11 的编译版本：
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+
+参考：https://discuss.pytorch.org/t/which-pytorch-version-2-0-1-support-cuda-11-4/190446/3
