@@ -117,7 +117,7 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=5000, help='Port (default: 5000)')
     args = parser.parse_args()
 
-    app.run(host=args.host, port=args.port, debug=True)
+    app.run(host=args.host, port=args.port, debug=True, use_reloader=False)
 ```
 
 Start the service:
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=5000, help='Port (default: 5000)')
     args = parser.parse_args()
 
-    app.run(host=args.host, port=args.port, debug=True)
+    app.run(host=args.host, port=args.port, debug=True, use_reloader=False)
 
 #response, history = model.chat(tokenizer, "你好", history=[])
 #print(response)
