@@ -28,4 +28,24 @@ docker run -it --name admin -v postgres-data:/var/lib/postgresql/data ubuntu
 
 ```
 
+## Get command used to start a Docker container
 
+https://stackoverflow.com/questions/32758793/how-to-show-the-run-command-of-a-docker-container
+
+docker inspect facechain |  jq -r '.[0]["Config"]["Cmd"][0]'
+
+## How to start a stopped Docker container
+
+docker start facechain
+
+## How to start a stopped Docker container with a different command?
+
+Find the stopped container, commit the stopped container to a new image. 
+And start a new container of the image.
+
+```
+docker ps -a
+docker commit $CONTAINER_ID user/test_image
+docker run -ti --entrypoint=/bin/bash user/test_image
+
+```
