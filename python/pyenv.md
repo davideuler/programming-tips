@@ -22,6 +22,17 @@ Install Python 3.5.1:
         $ pyenv install 3.5.1
         $ pyenv rehash
 
+### pyenv virtualenv
+
+$ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 ### pyenv versions
 
 List installed versions:
