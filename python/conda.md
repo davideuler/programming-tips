@@ -1,7 +1,9 @@
 # Create conda environment
 
+```
 conda create -n mlp python=3.10
 conda activate mlp
+```
 
 # Show conda environment list
 
