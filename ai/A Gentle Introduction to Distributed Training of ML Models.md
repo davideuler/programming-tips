@@ -28,7 +28,7 @@ It’s worth noting that there are different ways to implement data parallelism 
 
 Let’s look at an example source code in Pytorch to implement the data parallelism approach:
 
-```
+``` python
 import torch
 import torch.nn as nn
 import torch.optim as optim
