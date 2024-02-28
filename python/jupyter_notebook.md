@@ -1,13 +1,16 @@
 
 ## Installation Jupyter
-$ apt-get install jupyter
-$ pip install jupyter  # or install jupyter by pip
+```
+$ apt-get install jupyter # or by pip:
+$ pip install jupyter  # or pip install jupyter-lab
 $ pip install 'python-lsp-server[all]'
 $ pip install -U jedi-language-server
 $ npm install --save-dev pyright
+$ pip install --upgrade notebook==6.4.12
 $ jupyter notebook
 $ jupyter notebook --ip 0.0.0.0
 $ jupyter notebook --allow-root --ip 0.0.0.0 .
+```
 
 ## Install Language servers:
 https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
