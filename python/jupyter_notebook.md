@@ -1,13 +1,29 @@
 
 ## Installation Jupyter
-$ apt-get install jupyter
-$ pip install jupyter  # or install jupyter by pip
+```
+$ apt-get install jupyter # or by pip:
+$ pip install jupyter  # or pip install jupyter-lab
 $ pip install 'python-lsp-server[all]'
 $ pip install -U jedi-language-server
 $ npm install --save-dev pyright
+$ pip install --upgrade notebook==6.4.12
 $ jupyter notebook
 $ jupyter notebook --ip 0.0.0.0
 $ jupyter notebook --allow-root --ip 0.0.0.0 .
+```
+
+Reference:
+https://jupyter.org/install
+
+If "jupyter notebook" failed with "ModuleNotFoundError: No module named 'jupyter_server.contents' switching to Python kernel", take a look at this page:
+https://github.com/microsoft/azuredatastudio/issues/24436
+
+Can update the Python3xx\site-packages\notebook\notebookapp.py to fix the issue, change content from
+'jupyter_server.contents.services.managers.ContentsManager'
+to
+'jupyter_server.services.contents.manager.ContentsManager'
+
+Another option maybe used to specify the version for traitlets (but not work on my m3, python 3.10.6).
 
 ## Install Language servers:
 https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
