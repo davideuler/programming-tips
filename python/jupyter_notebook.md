@@ -53,6 +53,12 @@ Caused by incompatibility of release version between nbextension and jupyter. Th
 
 https://stackoverflow.com/questions/76893872/modulenotfounderror-no-module-named-notebook-base-when-installing-nbextension
 
+``` shell
+  python -m pip install --upgrade notebook==6.4.12 -i https://pypi.tuna.tsinghua.edu.cn/simple
+  pip install -U traitlets==5.9.0
+  pip install -U ipython==8.9.0
+```
+
 
 ### For Conda installation
 Installing nbextension using conda forge channel. Simply run the below command in conda terminal:
