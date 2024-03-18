@@ -92,10 +92,11 @@ $ jupyter server --generate-config 
 
 In the ~/.jupyter directory, edit the notebook config file, jupyter_server_config.py. By default, the notebook config file has all fields commented out. The minimum set of configuration options that you should uncomment and edit in jupyter_server_config.py is the following:
 
+```
 # Set options for certfile, ip, password, and toggle off # browser auto-opening c.ServerApp.certfile = u'/absolute/path/to/your/certificate/mycert.pem' c.ServerApp.keyfile = u'/absolute/path/to/your/certificate/mykey.key'
 
 # Set ip to '*' to bind on all interfaces (ips) for the public server c.ServerApp.ip = '*' c.ServerApp.password = u'sha1:bcd259ccf...' c.ServerApp.open_browser = False 
 # It is a good idea to set a known, fixed port for server access c.ServerApp.port = 9999 
-
+```
 
 You can then start the notebook using the jupyter server command.
