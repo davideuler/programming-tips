@@ -46,6 +46,14 @@ The output of last command will be
 Enabling notebook extension hinterland/hinterland...
       - Validating: OK
 
+If error occurr on install nbextensions: "from notebook.base.handlers import APIHandler, IPythonHandler
+ModuleNotFoundError: No module named 'notebook.base'",
+
+Caused by incompatibility of release version between nbextension and jupyter. Then can install an old version of jupyter:
+
+https://stackoverflow.com/questions/76893872/modulenotfounderror-no-module-named-notebook-base-when-installing-nbextension
+
+
 ### For Conda installation
 Installing nbextension using conda forge channel. Simply run the below command in conda terminal:
 
