@@ -25,6 +25,37 @@ to
 
 Another option maybe used to specify the version for traitlets (but not work on my m3, python 3.10.6).
 
+## Extensions & Auto complete in jupyter notebook
+
+https://stackoverflow.com/questions/45390326/how-to-get-autocomplete-in-jupyter-notebook-without-using-tab
+
+First, install jupyter contrib nbextensions by running
+
+``` pip install jupyter_contrib_nbextensions ```
+
+Next install js and css file for jupyter by running
+
+``` jupyter contrib nbextension install --user ```
+
+and at the end run,
+
+``` jupyter nbextension enable hinterland/hinterland ```
+
+The output of last command will be
+
+Enabling notebook extension hinterland/hinterland...
+      - Validating: OK
+
+### For Conda installation
+Installing nbextension using conda forge channel. Simply run the below command in conda terminal:
+
+``` conda install -c conda-forge jupyter_nbextensions_configurator ```
+
+Next Step enabling the hinterland extension. Run the below command in conda terminal:
+
+``` jupyter nbextension enable hinterland/hinterland ```
+
+
 ## Install Language servers:
 https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
 
