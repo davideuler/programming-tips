@@ -17,9 +17,9 @@ List available python versions:
 
         $ pyenv install -l
 
-Install Python 3.5.1:
+Install Python 3.10:
 
-        $ pyenv install 3.5.1
+        $ PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.10  # enable framework to avoid errors like "ModuleNotFoundError: No module named '_lzma'"
         $ pyenv rehash
 
 ### pyenv virtualenv
@@ -43,7 +43,7 @@ List installed versions:
 
 Sets a local application-specific Python version:
 
-        $ pyenv local 2.7.6
+        $ pyenv local 2.7.6  
 
 Unset the local version:
 
