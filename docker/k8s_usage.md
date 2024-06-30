@@ -37,3 +37,10 @@ kubectl create secret docker-registry my-docker-registry-secret \
   --docker-email=[your-email] \
   -n [your-namespace]
 ```
+
+10.显示节点上的容器占用的磁盘空间大小
+https://stackoverflow.com/questions/62125346/list-container-images-in-kubernetes-cluster-with-size-like-docker-image-ls
+以 MB 显示各个 pod 占用的空间：
+```
+kubectl get nodes  -o json | jq '.items[].status.images[] | .names[1], (.sizeBytes | tonumber/1024/1024)'
+```
