@@ -43,4 +43,13 @@ git clone https://github.com/CoeJoder/lessfilter-pygmentize.git
 cd lessfilter-pygmentize/
 pipenv install
 pipenv run python main.py >/dev/null
+
+# if you performed previous step installation, do this:
+cp .lessfilter ~
+
+# otherwise, do this:
+wget -P ~ https://github.com/CoeJoder/lessfilter-pygmentize/raw/master/.lessfilter
+
+# now make it executable
+chmod +x ~/.lessfilter
 ```
