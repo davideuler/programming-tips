@@ -51,3 +51,21 @@ dependencies:
    - -e path/to/a/local/pkg
 ```
 
+# Conda create environment error 
+
+conda_libmamba_solver  
+RuntimeError: Unable to read repodata JSON file 'https://repo.anaconda.com/pkgs/main/linux-64'
+
+
+Config the .condarc:
+https://mirror.tuna.tsinghua.edu.cn/help/anaconda/
+
+
+``` bash
+# clean cache
+ conda clean -i 
+
+# create new environment
+ conda create -n anime-ai-310 python=3.10
+```
+
