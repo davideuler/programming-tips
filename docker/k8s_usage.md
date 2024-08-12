@@ -44,3 +44,13 @@ https://stackoverflow.com/questions/62125346/list-container-images-in-kubernetes
 ```
 kubectl get nodes  -o json | jq '.items[].status.images[] | .names[1], (.sizeBytes | tonumber/1024/1024)'
 ```
+
+11.Debug a kubernetes node via shell
+https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#node-shell-session
+
+Debugging via a shell on the node
+If none of these approaches work, you can find the Node on which the Pod is running and create a Pod running on the Node. To create an interactive shell on a Node using kubectl debug, run:
+
+kubectl debug node/mynode -it --image=ubuntu
+
+The node system will be mounted at /host
