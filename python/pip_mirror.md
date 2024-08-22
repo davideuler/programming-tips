@@ -1,5 +1,5 @@
 
-
+## 清华
 https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 
 pip
@@ -15,3 +15,8 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
 
 python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+
+## 南方科技大
+
+pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/web/simple
+pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/web/simple
