@@ -24,6 +24,9 @@ import logging
 
 logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
 
+# 记录下来 行号 文件名:方法名
+logging.basicConfig(filename='application.log', level=logging.INFO, format='%(asctime)s - %(levelname)-5s %(lineno)d %(filename)s:%(funcName)s - %(message)s')
+
 logger = logging.getLogger(__name__)
 ```
 
