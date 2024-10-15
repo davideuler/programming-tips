@@ -20,3 +20,8 @@ python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 
 pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/web/simple
 pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/web/simple
+
+
+## 阿里云
+
+https://mirrors.aliyun.com/pypi/simple
