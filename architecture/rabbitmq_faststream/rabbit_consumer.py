@@ -20,7 +20,7 @@ async def main():
     )
     
     broker = RabbitBroker(
-        host="47.92.35.83",
+        host="192.168.1.5",
         port=5672,
         virtualhost="/",
         security=SASLPlaintext(
