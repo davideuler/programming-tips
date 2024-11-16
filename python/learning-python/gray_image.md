@@ -1,6 +1,6 @@
 ## 生成灰度图
 
-```
+``` python
 import cv2
 img = cv2.imread("2.jpg")
 
@@ -19,7 +19,7 @@ cv2.destroyAllWindows()
 
 ## 生成轮廓图
 
-```
+``` python
 import cv2
 
 img = cv2.imread("img.jpg")
