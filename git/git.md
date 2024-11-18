@@ -47,3 +47,22 @@ Use Git reflog to check commits history.
 ```
 git reflog
 ```
+
+## 3.删除一个文件的所有提交记录（一个误上传大文件，或者历史记录中包含敏感信息的配置文件/代码等）
+
+下载 bfg.jar:
+https://rtyley.github.io/bfg-repo-cleaner/
+
+切换到 bare 仓库 (git clone --mirror 拉取到的仓库）， 或者本地仓库，删除不要历史记录的文件（如果有最新版本，保留最新版本的文件）：
+
+```
+$ java -jar ~/workspace/bfg-1.14.0.jar --delete-files oss_client_with_ak.py SchedulerJob/
+$ java -jar ~/workspace/bfg-1.14.0.jar --strip-blobs-bigger-than 100M some-big-repo.git  # for bare repository
+
+# cd SchedulerJob
+$ git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+$ git push --force
+```
+
+
