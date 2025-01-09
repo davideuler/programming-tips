@@ -30,6 +30,24 @@ logging.basicConfig(filename='application.log', level=logging.INFO, format='%(as
 logger = logging.getLogger(__name__)
 ```
 
+## Logging to console and file
+
+``` python
+import logging
+
+# 定义日志格式
+log_format = '%(asctime)s %(levelname)s - [P:%(process)d] - %(filename)s.%(funcName)s:%(lineno)d - %(message)s'
+date_format = '%Y-%m-%d %H:%M:%S'
+
+logging.basicConfig(level=logging.INFO, format=log_format, datefmt=date_format)
+file_handler = logging.FileHandler('application.log')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter(log_format, datefmt=date_format))
+
+logging.getLogger().addHandler(file_handler)
+
+```
+
 ## Logging by Loguru
 
 https://github.com/Delgan/loguru
