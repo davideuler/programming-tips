@@ -22,6 +22,11 @@ Install Python 3.10:
         $ PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.10  # enable framework to avoid errors like "ModuleNotFoundError: No module named '_lzma'"
         $ pyenv rehash
 
+Make sure the libssl and liblzma has been install to avoid  "ModuleNotFoundError: No module named '_lzma'
+WARNING: The Python lzma extension was not compiled. Missing the lzma lib? ":
+
+        $ apt-get install liblzma-dev libssl-dev
+
 ### pyenv virtualenv
 
 $ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
