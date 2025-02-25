@@ -26,6 +26,9 @@ Make sure the libssl and liblzma has been install to avoid  "ModuleNotFoundError
 WARNING: The Python lzma extension was not compiled. Missing the lzma lib? ":
 
         $ apt-get install liblzma-dev libssl-dev
+        $ apt-get install libffi-dev # to avoid error of ModuleNotFoundError: "The _ctypes module is not available."
+        $ pyenv install 3.12
+
 
 ### pyenv virtualenv
 
