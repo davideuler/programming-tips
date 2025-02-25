@@ -24,8 +24,9 @@ Install Python 3.10:
 
 Make sure the libssl and liblzma has been install to avoid  "ModuleNotFoundError: No module named '_lzma'
 WARNING: The Python lzma extension was not compiled. Missing the lzma lib? ":
+https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 
-        $ apt-get install liblzma-dev libssl-dev
+        $ apt update && apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
         $ apt-get install libffi-dev # to avoid error of ModuleNotFoundError: "The _ctypes module is not available."
         $ pyenv install 3.12
 
