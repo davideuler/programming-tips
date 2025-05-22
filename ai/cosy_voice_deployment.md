@@ -16,3 +16,9 @@ And Start the application as:
 python server.py --port 50000 --model_dir E:\sensevoice\CosyVoice\models\CosyVoice2-0.5B --spk_info spk2info.pt
 
 Reference: https://blog.csdn.net/chui_yu666/article/details/147131301
+
+## API Request
+https://blog.csdn.net/u013983235/article/details/144758602
+
+## 如何生成自己音色的spk2info.pt 
+https://github.com/FunAudioLLM/CosyVoice/issues/604
