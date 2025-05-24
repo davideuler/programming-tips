@@ -1,11 +1,10 @@
 
 
 https://github.com/ibraheemdev/modern-unix?tab=readme-ov-file
+
 https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/
-https://lnav.org/downloads
-https://github.com/dandavison/delta#get-started
+
 https://zaiste.net/posts/shell-commands-rust/
-https://github.com/jonas/tig/issues/26#issuecomment-1923835137
 
 ## Modern Linux/Mac (maybe also works on Windows) Command line tools
 
@@ -84,3 +83,11 @@ bind stage  S >sh -c "git diff HEAD -- %(file) | delta --paging always --side-by
 bind status D >sh -c "git diff HEAD -- %(file) | delta --paging always"
 bind status S >sh -c "git diff HEAD -- %(file) | delta --paging always --side-by-side"
 ```
+
+### References
+
+https://lnav.org/downloads
+
+https://github.com/dandavison/delta#get-started
+
+https://github.com/jonas/tig/issues/26#issuecomment-1923835137
