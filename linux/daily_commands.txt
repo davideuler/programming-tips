@@ -1,3 +1,7 @@
 
 ## Show local  listening services, and ports with process names
 lsof -i -n -P | grep LISTEN
+
+## List all installed packages on Ubuntu
+sudo apt list --manual-installed
+
