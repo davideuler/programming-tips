@@ -69,6 +69,23 @@ $vim ~/.gitconfig
     conflictstyle = zdiff3
 ```
 
+### Note for ripgrep
+
+Easier and faster grep for file and directories.
+
+Searching for multiple required keywords (AND logic): 
+https://github.com/davideuler/ripgrep
+
+**Syntax:**
+
+```
+rg --and "keyword1 keyword2 keyword3" [path...]
+```
+or with a primary pattern:
+```
+rg --and keyword1 --and keyword2 --and keyword3 [path...]
+```
+
 ### delta as tig diff
 For tig diff, configure ~/.tigrc to bind Shift + D, Shift + S for side by side diff,
 
