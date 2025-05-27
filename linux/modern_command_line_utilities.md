@@ -46,30 +46,7 @@ sudo install lazygit /usr/local/bin
 
 ```
 
-## A note on delta
-
-### delta as git pager
-Delta works as a git pager, configure it at ~/.gitconfig, then git diff, git show works.
-
-$vim ~/.gitconfig
-
-```
-[core]
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true  # use n and N to move between diff sections
-    light = true      # or dark = true, or omit for auto-detection
-    side-by-side = true
-
-[merge]
-    conflictstyle = zdiff3
-```
-
-### Note for ripgrep
+## Note for ripgrep
 
 Easier and faster grep for file and directories.
 
@@ -86,7 +63,35 @@ or with a primary pattern:
 rg --and keyword1 --and keyword2 --and keyword3 [path...]
 ```
 
+## A note on delta
+
+### delta as git pager
+Delta works as a git pager, configure it at ~/.gitconfig, then git diff, git show works.
+
+``` bash
+$vim ~/.gitconfig
+```
+
+```
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    light = true      # or dark = true, or omit for auto-detection
+    side-by-side = true
+
+[merge]
+    conflictstyle = zdiff3
+
+```
+
+
 ### delta as tig diff
+
 For tig diff, configure ~/.tigrc to bind Shift + D, Shift + S for side by side diff,
 
 vim ~/.tigrc
