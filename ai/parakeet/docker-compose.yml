@@ -1,0 +1,25 @@
+services:
+  parakeet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: exp-26-parakeet
+    ports:
+      - "${MAPPED_HOST_PORT_PARAKEET}:7860"
+    environment:
+      - GRADIO_SERVER_NAME=0.0.0.0
+    volumes:
+      - ${HOME}/.cache:/root/.cache
+    networks:
+      - parakeet-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1 # Use 'all' available GPUs, or specify a number e.g., 1
+              capabilities: [gpu] # Essential capability
+
+networks:
+  parakeet-net:
+    driver: bridge
