@@ -16,11 +16,11 @@ lnav doesn't works with warp now(2025/05).
 On Linux:
 
 ```
-wget https://github.com/eza-community/eza/releases/download/v0.20.6/eza_x86_64-unknown-linux-musl.tar.gz
+wget https://github.com/eza-community/eza/releases/download/v0.21.4/eza_x86_64-unknown-linux-musl.tar.gz
 tar -xzf eza_x86_64-unknown-linux-musl.tar.gz
 cp eza /usr/local/bin
 
-wget https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-musl_0.24.0_amd64.deb
+wget https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-musl_0.25.0_amd64.deb
 dpkg -i bat-musl*.deb
 
 wget https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-musl_1.1.5_amd64.deb
@@ -29,14 +29,14 @@ dpkg -i lsd-*.deb
 wget https://github.com/sharkdp/fd/releases/download/v10.2.0/fd-musl_10.2.0_amd64.deb
 tar zxvf fd-*.tar.gz
 
-wget https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep-14.1.0-x86_64-unknown-linux-musl.tar.gz
+wget https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz
 tar zxvf ripgrep*.tar.gz
 
 
 wget https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz
 tar zxvf delta*.tar.gz
 
-wget https://github.com/bootandy/dust/releases/download/v1.1.1/du-dust_1.1.1-1_amd64.deb
+wget https://github.com/bootandy/dust/releases/download/v1.2.0/du-dust_1.2.0-1_amd64.deb
 tar xvf dust*.tar.gz
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
