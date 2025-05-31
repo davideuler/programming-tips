@@ -1,3 +1,9 @@
+## Inspect each layer of a docker image
+
+```
+brew install dive
+dive nginx:latest
+```
 
 ## Remove dangling docker images with a none tag
 
