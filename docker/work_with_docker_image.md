@@ -56,6 +56,13 @@ docker run -ti --entrypoint=/bin/bash user/test_image
 
 ```
 
+## Clean docker builder cache to release storage
+
+```
+docker builder prune
+```
+
+
 ## Check docker container info by a host process (which consumes nvidia vram), 
 
 Check the container info of cgroup on Linux:
