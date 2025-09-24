@@ -1,4 +1,6 @@
 
+pip install playwright==1.55.0
+pip install playwright-stealth@git+https://github.com/Granitosaurus/playwright-stealth@fbb50332284751db75728eab6900ebd2b7f56446
 
 ```
 import asyncio
