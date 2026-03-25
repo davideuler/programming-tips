@@ -10,7 +10,7 @@ Change the ports in socks2http3.py, and start the agent:
 
 ```
 python3 socks2http3.py
-`
+```
 
 ### Other Options:
 https://github.com/KaranGauswami/socks-to-http-proxy
