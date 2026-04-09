@@ -84,3 +84,48 @@ colima ssh sudo systemctl restart docker
 ```
 it works for me
 
+### Mac Colima 下面设置 Docker Build 的代理
+
+To set up a proxy for docker build in Colima, you must configure both the Colima VM environment (for pulling base images) and the Docker build arguments (for internet access during the build process). 
+**1. Configure the Colima VM (System-wide)**
+To ensure the Docker daemon inside the Colima VM can pull images through your proxy, edit the Colima configuration: 
+Open the configuration: Run colima start --edit (or edit ~/.colima/default/colima.yaml).
+Add environment variables: Locate the env: section and add your proxy settings:
+
+``` yaml
+
+env:
+  HTTP_PROXY: http://your-proxy-address:port
+  HTTPS_PROXY: http://your-proxy-address:port
+  NO_PROXY: localhost,127.0.0.1,192.168.5.2
+```
+
+Note: If your proxy is running on your host machine (Mac/Linux), use the gateway IP 192.168.5.2 instead of localhost in the proxy URL. 
+GitHub
+GitHub
+ 
+**2. Pass Proxy to the Build Process**
+Configuring the VM environment often does not automatically pass proxy settings into the docker build container. You must provide them as build arguments: 
+bash
+docker build \
+  --build-arg http_proxy=http://192.168.5.2:port \
+  --build-arg https_proxy=http://192.168.5.2:port \
+  --build-arg no_proxy=localhost,127.0.0.1 \
+  -t your-image-name .
+  
+**3. Alternative: Global Docker Client Config**
+Instead of flags, you can set the proxy globally for all builds in your host's Docker configuration file (~/.docker/config.json): 
+
+``` json
+{
+ "proxies": {
+   "default": {
+     "httpProxy": "http://192.168.5.2:port",
+     "httpsProxy": "http://192.168.5.2:port",
+     "noProxy": "localhost,127.0.0.1"
+   }
+ }
+}
+```
+
+
