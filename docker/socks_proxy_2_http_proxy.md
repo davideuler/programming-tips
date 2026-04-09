@@ -63,3 +63,24 @@ Restart docker daemon
 sudo systemctl restart docker
 ```
 
+### Mac Colima 下面设置 Docker pull 的代理，
+
+https://github.com/abiosoft/colima/issues/294
+https://github.com/abiosoft/colima/issues/1040
+
+```
+colima start --edit
+
+go to the last line
+
+env: 
+    http_proxy: http://192.168.5.2:7890
+    https_proxy: http://192.168.5.2:7890
+    no_proxy: localhost,192.168.5.2
+quit then execute command
+
+colima ssh sudo systemctl daemon-reload
+colima ssh sudo systemctl restart docker
+```
+it works for me
+
